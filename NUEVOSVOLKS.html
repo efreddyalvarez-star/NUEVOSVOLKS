@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Catálogo Estilo Marketplace</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; background-color:#f4f4f4; }
+
+/* Título de la sección */
+.titulo-seccion {
+    background-color: #02A6E1; /* Azul cielo */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de productos con fondo uniforme */
+.seccion-productos {
+    background-color: #e6f2fb; /* Azul muy claro para combinar con el título */
+    padding: 40px 20px;
+}
+
+/* Catálogo */
+.catalogo { 
+    display:grid; 
+    grid-template-columns:repeat(3,1fr); 
+    gap:30px; 
+    max-width:1200px; 
+    margin:auto; 
+}
+
+/* Producto */
+.producto { 
+    background-color:white; 
+    border:1px solid #ccc; 
+    border-radius:10px; 
+    overflow:hidden; 
+    box-shadow:0 2px 6px rgba(0,0,0,0.15); 
+    transition:0.2s; 
+    cursor:pointer; 
+}
+.producto:hover { transform:scale(1.03); }
+.producto img { width:100%; height:300px; object-fit:cover; display:block; }
+.info { padding:15px; text-align:center; }
+.descripcion { font-weight:bold; font-size:1.2em; margin-bottom:8px; }
+.precio { color:green; font-size:1.3em; }
+
+/* Modales */
+.modal { display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; overflow-y:auto; background-color: rgba(0,0,0,0.8); padding:40px 10px; }
+.modal-content { background-color:#fff; margin:auto; padding:20px; border-radius:10px; max-width:900px; position:relative; }
+.modal-content img { width:100%; border-radius:10px; }
+.close { position:absolute; top:15px; right:25px; color:#333; font-size:30px; font-weight:bold; cursor:pointer; }
+.galeria { display:flex; justify-content:center; gap:10px; margin-top:15px; flex-wrap:wrap; }
+.galeria img { width:120px; height:80px; object-fit:cover; border-radius:5px; cursor:pointer; border:2px solid transparent; transition:0.3s; }
+.galeria img:hover { border:2px solid #333; }
+
+/* Responsivo */
+@media (max-width:900px) { .catalogo { grid-template-columns:repeat(2,1fr); } }
+@media (max-width:600px) { .catalogo { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<h1 class="titulo-seccion">NUEVOS VOLKSWAGEN</h1>
+
+<div class="seccion-productos">
+  <div class="catalogo">
+    <!-- Productos 1 a 23 -->
+    <div class="producto" onclick="abrirModal('cupraModal')"><img src="tera.jpeg" alt="CUPRA"><div class="info"><div class="descripcion">volkswagen</div><div class="precio">TERAMONT</div></div></div>
+
+    <div class="producto" onclick="abrirModal('bmwModal')"><img src="BMW.jpeg" alt="BMW"><div class="info"><div class="descripcion">TAOS</div><div class="precio">TAOS HIGHLINE TIPTRONIC VERDE</div></div></div>
+
+    <div class="producto" onclick="abrirModal('virtusModal')"><img src="VIRTUS.jpeg" alt="VIRTUS"><div class="info"><div class="descripcion">TIGUAN</div><div class="precio">TAIGUN COMFORTLINE TIPTRONIC AMARILLA</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto4')"><img src="ama.jpeg" alt="Auto 4"><div class="info"><div class="descripcion">AMAROK</div><div class="precio">AMAROK PANAMERICANA 4 MOTION </div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto5')"><img src="rok.jpeg" alt="Auto 5"><div class="info"><div class="descripcion">AMAROK</div><div class="precio">AMAROK AVENTURA 4 MOTION DIESEL 154KW</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto6')"><img src="tus.jpeg" alt="Auto 6"><div class="info"><div class="descripcion">VIRTUS PLATA AUTOMATICO</div><div class="precio">VIRTUS TRENDLINE 4 PTS. 5  VEL  STD</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto7')"><img src="robu.jpeg" alt="Auto 7"><div class="info"><div class="descripcion">ROBUST</div><div class="precio">SAVEIRO ROBUST STD.</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto8')"><img src="gris.jpeg" alt="VIRTUS PLATA "><div class="info"><div class="descripcion">JETTA</div><div class="precio">JETTA COMFORTLINE TIPTRONIC</div></div></div>
+
+
+    <div class="producto" onclick="abrirModal('auto9')"><img src="gli.jpeg" alt="Auto 9"><div class="info"><div class="descripcion">GLI</div><div class="precio">JETTA GLI  DSG 7 VEL</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto10')"><img src="tat.jpeg" alt="Auto 10"><div class="info"><div class="descripcion">TAOS</div><div class="precio">TAOS TRENDLINE TIPTRONIC</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto11')"><img src="ac.jpeg" alt="Auto 11"><div class="info"><div class="descripcion">TRACK</div><div class="precio">POLO TRACK 1.6 L. STD.</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto12')"><img src="audib.jpeg" alt="Auto 12"><div class="info"><div class="descripcion">JETTA</div><div class="precio">JETTA COMFORTLINE TIPTRONIC</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto13')"><img src="te.jpeg" alt="Auto 13"><div class="info"><div class="descripcion">TERA</div><div class="precio">VOLKSWAGEN TERA COMFORTLINE TIP</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto14')"><img src="tai.jpeg" alt="Auto 14"><div class="info"><div class="descripcion">TAIGUN</div><div class="precio">TAIGUN COMFORTLINE TIPTRONIC</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto15')"><img src="po.jpeg" alt="Auto 15"><div class="info"><div class="descripcion">POLO</div><div class="precio">POLO HIGHLINE 1.0 TIPTRONIC</div></div></div>
+
+    <div class="producto" onclick="abrirModal('auto16')"><img src="ir.jpeg" alt="Auto 16"><div class="info"><div class="descripcion">VIRTUS PLATA ESTANDAR</div><div class="precio">VIRTUS TRENDLINE TIPTRONIC</div></div></div>
+
+  </div>
+</div>
+
+<!-- MODALES (1 a 23) -->
+<!-- Aquí se incluyen todos los modales que ya tenías -->
+
+<script>
+function abrirModal(id){
+  document.getElementById(id).style.display = "block";
+}
+function cerrarModal(id){
+  document.getElementById(id).style.display = "none";
+}
+function cambiarImagen(id, src){
+  document.getElementById(id).src = src;
+}
+</script>
+
+</body>
+</html>
+
+</div>
+
+<!-- MODALES 1 a 3 CON IMÁGENES -->
+<div id="cupraModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('cupraModal')">&times;</span>
+<img id="mainCupra" src="tera.jpeg" alt="CUPRA">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="tera2.jpeg" onclick="cambiarImagen('mainCupra', this.src)">
+<img src="tera3.jpeg" onclick="cambiarImagen('mainCupra', this.src)">
+<img src="tera4.jpeg" onclick="cambiarImagen('mainCupra', this.src)">
+<img src="tera5.jpeg" onclick="cambiarImagen('mainCupra', this.src)">
+<img src="tera6.jpeg" onclick="cambiarImagen('mainCupra', this.src)">
+</div>
+</div>
+</div>
+
+<div id="bmwModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('bmwModal')">&times;</span>
+<img id="mainBmw" src="tao.jpeg" alt="BMW">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="tao2.jpeg" onclick="cambiarImagen('mainBmw', this.src)">
+<img src="tao3.jpeg" onclick="cambiarImagen('mainBmw', this.src)">
+<img src="tao4.jpeg" onclick="cambiarImagen('mainBmw', this.src)">
+<img src="tao.jpeg" onclick="cambiarImagen('mainBmw', this.src)">
+</div>
+</div>
+</div>
+
+<div id="virtusModal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('virtusModal')">&times;</span>
+<img id="mainVirtus" src="one.jpeg" alt="VIRTUS">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="one2.jpeg" onclick="cambiarImagen('mainVirtus', this.src)">
+<img src="one3.jpeg" onclick="cambiarImagen('mainVirtus', this.src)">
+<img src="one4.jpeg" onclick="cambiarImagen('mainVirtus', this.src)">
+<img src="one5.jpeg" onclick="cambiarImagen('mainVirtus', this.src)">
+<img src="one6.jpeg" onclick="cambiarImagen('mainVirtus', this.src)">
+<img src="one7.jpeg" onclick="cambiarImagen('mainVirtus', this.src)">
+</div>
+</div>
+</div>
+
+<!-- MODALES 4 a 23 LISTOS PARA EDITAR -->
+<div id="auto4" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto4')">&times;</span>
+<img id="main4" src="ama.jpeg" alt="Auto 4">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="ama2.jpeg" onclick="cambiarImagen('main4', this.src)">
+<img src="ama3.jpeg" onclick="cambiarImagen('main4', this.src)">
+<img src="ama4.jpeg" onclick="cambiarImagen('main4', this.src)">
+<img src="ama5.jpeg" onclick="cambiarImagen('main4', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto5" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto5')">&times;</span>
+<img id="main5" src="rok.jpeg" alt="Auto 5">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="rok2.jpeg" onclick="cambiarImagen('main5', this.src)">
+<img src="rok3.jpeg" onclick="cambiarImagen('main5', this.src)">
+<img src="rok4.jpeg" onclick="cambiarImagen('main5', this.src)">
+<img src="rok5.jpeg" onclick="cambiarImagen('main5', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto6" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto6')">&times;</span>
+<img id="main6" src="tus.jpeg" alt="Auto 6">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="tus2" onclick="cambiarImagen('main6', this.src)">
+<img src="tus3.jpeg" onclick="cambiarImagen('main6', this.src)">
+<img src="tus4.jpeg" onclick="cambiarImagen('main6', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto7" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto7')">&times;</span>
+<img id="main7" src="robu.jpeg" alt="Auto 7">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="robu2.jpeg" onclick="cambiarImagen('main7', this.src)">
+<img src="robu3.jpeg" onclick="cambiarImagen('main7', this.src)">
+<img src="robu4.jpeg" onclick="cambiarImagen('main7', this.src)">
+<img src="robu5.jpeg" onclick="cambiarImagen('main7', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto8" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto8')">&times;</span>
+<img id="main8" src="jet.jpeg" alt="Auto 8">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="jet2.jpeg" onclick="cambiarImagen('main8', this.src)">
+<img src="jet3.jpeg" onclick="cambiarImagen('main8', this.src)">
+<img src="jet4.jpeg" onclick="cambiarImagen('main8', this.src)">
+</div>
+</div>
+</div>
+
+
+<div id="auto9" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto9')">&times;</span>
+<img id="main9" src="gli.jpeg" alt="Auto 9">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="gli2.jpeg" onclick="cambiarImagen('main9', this.src)">
+<img src="gli3.jpeg" onclick="cambiarImagen('main9', this.src)">
+<img src="gli4.jpeg" onclick="cambiarImagen('main9', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto10" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto10')">&times;</span>
+<img id="main10" src="tat.jpeg" alt="Auto 10">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="tat2.jpeg" onclick="cambiarImagen('main10', this.src)">
+<img src="tat3.jpeg" onclick="cambiarImagen('main10', this.src)">
+<img src="tat4.jpeg" onclick="cambiarImagen('main10', this.src)">
+<img src="tat5.jpeg" onclick="cambiarImagen('main10', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto11" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto11')">&times;</span>
+<img id="main11" src="ac.jpeg" alt="Auto 11">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="ac2.jpeg" onclick="cambiarImagen('main11', this.src)">
+<img src="ac3.jpeg" onclick="cambiarImagen('main11', this.src)">
+<img src="ac4.jpeg" onclick="cambiarImagen('main11', this.src)">
+<img src="ac5.jpeg" onclick="cambiarImagen('main11', this.src)">
+<img src="ac6.jpeg" onclick="cambiarImagen('main11', this.src)">
+<img src="ac7.jpeg" onclick="cambiarImagen('main11', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto12" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto12')">&times;</span>
+<img id="main12" src="ro.jpeg" alt="Auto 12">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="ro2.jpeg" onclick="cambiarImagen('main12', this.src)">
+<img src="ro3.jpeg" onclick="cambiarImagen('main12', this.src)">
+<img src="ro4.jpeg" onclick="cambiarImagen('main12', this.src)">
+<img src="ro5.jpeg" onclick="cambiarImagen('main12', this.src)">
+<img src="ro6.jpeg" onclick="cambiarImagen('main12', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto13" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto13')">&times;</span>
+<img id="main13" src="te.jpeg" alt="Auto 13">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="te2.jpeg" onclick="cambiarImagen('main13', this.src)">
+<img src="te3.jpeg" onclick="cambiarImagen('main13', this.src)">
+<img src="te4.jpeg" onclick="cambiarImagen('main13', this.src)">
+<img src="te5.jpeg" onclick="cambiarImagen('main13', this.src)">
+<img src="te6.jpeg" onclick="cambiarImagen('main13', this.src)">
+<img src="te7.jpeg" onclick="cambiarImagen('main13', this.src)">
+<img src="te8.jpeg" onclick="cambiarImagen('main13', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto14" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto14')">&times;</span>
+<img id="main14" src="tai.jpeg" alt="Auto 14">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src=AZUL2.jpeg onclick="cambiarImagen('main14', this.src)">
+<img src="tai2.jpeg" onclick="cambiarImagen('main14', this.src)">
+<img src="tai3.jpeg" onclick="cambiarImagen('main14', this.src)">
+<img src="tai4.jpeg" onclick="cambiarImagen('main14', this.src)">
+<img src="tai5.jpeg" onclick="cambiarImagen('main14', this.src)">
+<img src="tai6.jpeg" onclick="cambiarImagen('main14', this.src)">
+<img src="tai7.jpeg" onclick="cambiarImagen('main14', this.src)">
+<img src="tai8.jpeg" onclick="cambiarImagen('main14', this.src)">
+</div>
+</div>
+</div>
+
+<div id="auto15" class="modal">
+<div class="modal-content">
+<span class="close" onclick="cerrarModal('auto15')">&times;</span>
+<img id="main15" src="po.jpeg" alt="Auto 15">
+<h2></h2>
+<p></p>
+<div class="galeria">
+<img src="po2.jpeg" onclick="cambiarImagen('main15', this.src)">
+<img src="po3.jpeg" onclick="cambiarImagen('main15', this.src)">
+<img src="po4.jpeg" onclick="cambiarImagen('main15', this.src)">
+<img src="po5.jpeg" onclick="cambiarImagen('main15', this.src)">
+<img src="po6.jpeg" onclick="cambiarImagen('main15', this.src)">
+<img src="po7.jpeg" onclick="cambiarImagen('main15', this.src)">
+</div>
+</div>
+</div>
+
+
+
+
+<div id="auto16" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="cerrarModal('auto16')">&times;</span>
+    <img id="main16" src="ir.jpeg" alt="Auto 16">
+    <h2></h2>
+    <p></p>
+    <div class="galeria">
+      <img src="ir2.jpeg" onclick="cambiarImagen('main16', this.src)">
+      <img src="ir3.jpeg" onclick="cambiarImagen('main16', this.src)">
+      <img src="ir4.jpeg" onclick="cambiarImagen('main16', this.src)">
+      <img src="ir5.jpeg" onclick="cambiarImagen('main16', this.src)">
+      <img src="ir6.jpeg" onclick="cambiarImagen('main16', this.src)">
+      <img src="ir77.jpeg" onclick="cambiarImagen('main16', this.src)">
+    </div>
+  </div>
+</div>
+
+<script>
+// Función para abrir un modal
+function abrirModal(id) {
+  const modal = document.getElementById(id);
+  if(modal) modal.style.display = "block";
+}
+
+// Función para cerrar un modal
+function cerrarModal(id) {
+  const modal = document.getElementById(id);
+  if(modal) modal.style.display = "none";
+}
+
+// Función para cambiar la imagen principal del modal
+function cambiarImagen(mainId, src) {
+  const mainImg = document.getElementById(mainId);
+  if(mainImg) mainImg.src = src;
+}
+
+// Cerrar modal si se hace clic fuera del contenido
+window.onclick = function(event) {
+  const modales = document.querySelectorAll('.modal');
+  modales.forEach(modal => {
+    if(event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+}
+</script>
+
